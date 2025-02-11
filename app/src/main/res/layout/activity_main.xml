@@ -8,12 +8,40 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/select"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <RadioGroup
+        android:id="@+id/radioGroupSortBy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" >
+
+        <RadioButton
+            android:id="@+id/CDs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/CDs" />
+
+        <RadioButton
+            android:id="@+id/Loans"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Loans" />
+
+        <RadioButton
+            android:id="@+id/checktext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Checking" />
+    </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

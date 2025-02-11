@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MyFinances</string>
+    <string name="CDs">CDs</string>
+    <string name="Loans">Loans</string>
+    <string name="Checking">Checking</string>
+    <string name="select">SELECT</string>
+    <string name="account_number">Account Number</string>
+    <string name="current_balance">Current Balance</string>
+    <string name="interest_rate">Interest Rate</string>
 </resources>

@@ -1,6 +1,6 @@
 package com.example.myfinances;
 
-public class CDs {
+public class CDs implements FinanceAccount{
     private int accountNumber;
     private double initialBalance;
     private double currentBalance;
@@ -12,9 +12,11 @@ public class CDs {
         this.currentBalance = 0;
         this.interestRate = 0;
     }
+    @Override
     public int getAccountNumber() {
         return accountNumber;
     }
+    @Override
     public void setAccountNumber(int i){
         accountNumber = i;
     }
@@ -24,9 +26,11 @@ public class CDs {
     public void setInitialBalance(double i){
         initialBalance = i;
     }
+    @Override
     public double getCurrentBalance(){
         return currentBalance;
     }
+    @Override
     public void setCurrentBalance(double i){
         currentBalance = i;
     }

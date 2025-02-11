@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loan_activity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="190dp"
+        android:layout_height="428dp"
+        android:layout_marginBottom="151dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/accountnumber"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:text="Account Number:" />
+
+        <TextView
+            android:id="@+id/currentBalance"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:text="Initial Balance:" />
+
+        <TextView
+            android:id="@+id/currentBalance"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:text="Current Balance:" />
+
+        <TextView
+            android:id="@+id/paymentamount"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:text="Payment Amount:" />
+
+        <TextView
+            android:id="@+id/interestrate"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:text="Interest Rate:" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="190dp"
+        android:layout_height="428dp"
+        android:layout_marginBottom="151dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <EditText
+            android:id="@+id/editAccountNumber"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:ems="10"
+            android:hint="Account Number"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/editInitialB"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:ems="10"
+            android:hint="Initial Balance"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/editCurrentB"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:ems="10"
+            android:hint="Current Balance"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/editPayment"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:ems="10"
+            android:hint="Payment Amount"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/editRate"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:ems="10"
+            android:hint="Interest Rate"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="40dp"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/buttonCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="40dp"
+        android:text="@android:string/cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
