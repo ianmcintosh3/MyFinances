@@ -47,7 +47,7 @@
             tools:ignore="TextFields" />
 
         <EditText
-            android:id="@+id/editInitialB"
+            android:id="@+id/editCurrentB"
             android:layout_width="match_parent"
             android:layout_height="214dp"
             android:ems="10"
@@ -66,7 +66,7 @@
         app:layout_constraintTop_toTopOf="parent"></LinearLayout>
 
     <Button
-        android:id="@+id/buttonSave"
+        android:id="@+id/buttonSaveChecking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
@@ -75,7 +75,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
     <Button
-        android:id="@+id/buttonCancel"
+        android:id="@+id/buttonCancelChecking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -83,4 +83,13 @@
         android:text="@android:string/cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/textViewSavedChecking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SAVED"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/buttonCancelChecking"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
