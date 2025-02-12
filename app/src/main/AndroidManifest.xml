@@ -22,7 +22,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".CheckingActivity"></activity>
+        <activity android:name=".CheckingActivity"/>
+        <activity android:name=".CDActivity"/>
+        <activity android:name=".LoanActivity"/>
+
 
     </application>
 

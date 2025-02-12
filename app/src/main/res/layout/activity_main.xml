@@ -39,7 +39,7 @@
             android:text="@string/Loans" />
 
         <RadioButton
-            android:id="@+id/checktext"
+            android:id="@+id/Checking"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Checking" />

@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         initCDButton();
         initLoansButton();
         initCheckingButton();
+        initSaveButton();
+
 
     }
 
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initCheckingButton() {
-        RadioButton x = findViewById(R.id.checktext);
+        RadioButton x = findViewById(R.id.Checking);
         x.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,56 +73,88 @@ public class MainActivity extends AppCompatActivity {
     }
     private void initSaveButton() {
         Button saveButton = findViewById(R.id.buttonSave);
-        saveButton.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View view) {
-                hideKeyboard();
-                boolean wasSuccessful;
-                FinanceDataSource ds = new FinanceDataSource(MainActivity.this);
-                try {
-                    ds.open();
+        if (saveButton != null) {
+            saveButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    hideKeyboard();
+                    boolean wasSuccessful = false;
+                    FinanceDataSource ds = new FinanceDataSource(MainActivity.this);
 
-                    if (currentContact.getAccountNumber() == -1) {
-                        wasSuccessful = ds.insertContact(currentContact);
+                    try {
+                        ds.open();
+                        FinanceAccount account = null;
 
-                        if (wasSuccessful) {
-                            int newId = ds.getLastContactID();
-                            currentContact.setContactID(newId);
+                        RadioButton radioCD = findViewById(R.id.CDs);
+                        RadioButton radioLoan = findViewById(R.id.Loans);
+                        RadioButton radioChecking = findViewById(R.id.Checking);
+
+                        if (radioCD.isChecked()) {
+                            account = new CDs();
+                            ((CDs) account).setInitialBalance(Double.parseDouble(((EditText) findViewById(R.id.editInitialB)).getText().toString()));
+                            ((CDs) account).setInterestRate(Double.parseDouble(((EditText) findViewById(R.id.editRate)).getText().toString()));
+                        } else if (radioLoan.isChecked()) {
+                            account = new Loans();
+                            ((Loans) account).setInitialBalance(Double.parseDouble(((EditText) findViewById(R.id.editInitialB)).getText().toString()));
+                            ((Loans) account).setInterestRate(Double.parseDouble(((EditText) findViewById(R.id.editRate)).getText().toString()));
+                            ((Loans) account).setPaymentAmount(Double.parseDouble(((EditText) findViewById(R.id.editPayment)).getText().toString()));
+                        } else if (radioChecking.isChecked()) {
+                            account = new Checking();
                         }
-                    } else {
-                        wasSuccessful = ds.updateContact(currentContact);
-                    }
-                    ds.close();
-                } catch (Exception e) {
-                    wasSuccessful = false;
-                }
 
-                if (wasSuccessful) {
-                    //clear method
+                        if (account != null) {
+                            account.setAccountNumber(Integer.parseInt(((EditText) findViewById(R.id.editAccountNumber)).getText().toString()));
+                            account.setCurrentBalance(Double.parseDouble(((EditText) findViewById(R.id.editCurrentB)).getText().toString()));
+
+                            wasSuccessful = ds.insertAccount(account);
+                        }
+                        ds.close();
+                    } catch (Exception e) {
+                        wasSuccessful = false;
+                    }
+
+                    if (wasSuccessful) {
+                        clearFields();
+                    }
                 }
-            }
-        });
+            });
+        }
     }
+
     private void hideKeyboard() {
-        InputMethodManager imm = (InputMethodManager)
-                getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
         EditText editAccountNumber = findViewById(R.id.editAccountNumber);
-        imm.hideSoftInputFromWindow(editAccountNumber.getWindowToken(), 0);
-
         EditText editInitial = findViewById(R.id.editInitialB);
-        imm.hideSoftInputFromWindow(editInitial.getWindowToken(), 0);
-
         EditText editCurrent = findViewById(R.id.editCurrentB);
-        imm.hideSoftInputFromWindow(editCurrent.getWindowToken(), 0);
-
         EditText editInterest = findViewById(R.id.editRate);
-        imm.hideSoftInputFromWindow(editInterest.getWindowToken(), 0);
-
         EditText editPayment = findViewById(R.id.editPayment);
-        imm.hideSoftInputFromWindow(editPayment.getWindowToken(), 0);
 
+        if (editAccountNumber != null) imm.hideSoftInputFromWindow(editAccountNumber.getWindowToken(), 0);
+        if (editInitial != null) imm.hideSoftInputFromWindow(editInitial.getWindowToken(), 0);
+        if (editCurrent != null) imm.hideSoftInputFromWindow(editCurrent.getWindowToken(), 0);
+        if (editInterest != null) imm.hideSoftInputFromWindow(editInterest.getWindowToken(), 0);
+        if (editPayment != null) imm.hideSoftInputFromWindow(editPayment.getWindowToken(), 0);
+    }
+
+    private void clearFields() {
+        View mainLayout = findViewById(R.id.main);
+        if (mainLayout != null) {
+            mainLayout.requestFocus();
+        }
+
+        EditText editAccountNumber = findViewById(R.id.editAccountNumber);
+        EditText editInitial = findViewById(R.id.editInitialB);
+        EditText editCurrent = findViewById(R.id.editCurrentB);
+        EditText editInterest = findViewById(R.id.editRate);
+        EditText editPayment = findViewById(R.id.editPayment);
+
+        if (editAccountNumber != null) editAccountNumber.setText("");
+        if (editInitial != null) editInitial.setText("");
+        if (editCurrent != null) editCurrent.setText("");
+        if (editInterest != null) editInterest.setText("");
+        if (editPayment != null) editPayment.setText("");
     }
 }
 //save and cancel button
